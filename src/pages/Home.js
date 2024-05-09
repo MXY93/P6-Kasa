@@ -1,11 +1,12 @@
 import Banner from '../components/Banner';
 import Card from '../components/Card';
 import data from '../data/logements.json';
+import bannerImg from "../assets/banner-bg.png";
 
 export default function Home() {
   return (
     <div>
-      <Banner imageSrc="/images/banner.jpg" title="Bienvenue chez Kasa!" />
+      <Banner imageSrc={bannerImg} title="Chez vous, partout et ailleurs" />
       <div className="cards-list">
         {data.map((property) => (
           <Card
