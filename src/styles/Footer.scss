@@ -1,20 +1,20 @@
+@import 'variables';
+
 footer {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: $center;
+    align-items: $center;
     flex-direction: column;
-    background-color: black;
-    color: white;
+    background-color: $black-color;
+    color: $white-color;
     height: 209px;
     gap: 40px;
-}
-
-.footer__logo {
-    width: 122px;
-    height: 39.44px;
-}
-
-.footer__text {
-    font-size: 24px;
-    margin: 0;
+    .footer__logo {
+        width: 122px;
+        height: 39.44px;
+    }
+    .footer__text {
+        font-size: $large-font-size;
+        margin: 0;
+    }
 }
