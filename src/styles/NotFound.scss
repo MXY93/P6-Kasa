@@ -1,0 +1,22 @@
+.error-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 139px;
+    margin: 139px 0 139px 0;
+    h1 {
+       color: rgba(255, 96, 96, 1);
+       font-size: 288px;
+       margin: 0;
+    }
+    p {
+        color: rgba(255, 96, 96, 1);
+        font-weight: 500;
+        font-size: 36px;
+        margin: 0;
+    }
+    a {
+        color: black;
+    }
+}
