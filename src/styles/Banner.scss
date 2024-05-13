@@ -13,8 +13,6 @@
     &-overlay {
         position: absolute;
         inset: 0;
-        background-color: $black-color;
-        opacity: 0.6;
         border-radius: $banner-and-card--border-radius;
         z-index: 1;
     }
