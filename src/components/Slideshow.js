@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/Slideshow.scss';
 import Collapse from '../components/Collapse';
 import StarRating from './StarRating';
+import leftArrow from '../assets/left-arrow.png';
+import rightArrow from '../assets/right-arrow.png';
+
 
 function Slideshow({ property }) {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const { pictures, title, host, location, tags, ratings} = property;
+    const { pictures, title, host, location, tags, rating, description, equipments } = property;
 
     const goToPrevious = () => {
         const isFirstSlide = currentIndex === 0;
@@ -29,15 +32,24 @@ function Slideshow({ property }) {
         );
     }
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <div className="slideshow">
-            {pictures.length > 1 && (
-                <>
-                    <button onClick={goToPrevious} className="left-arrow">&lt;</button>
-                    <button onClick={goToNext} className="right-arrow">&gt;</button>
-                </>
-            )}
-            <img className="carousel-picture" src={pictures[currentIndex]} alt="Slideshow" />
+            <div className="carousel-container">
+                <img className="carousel-picture" src={pictures[currentIndex]} alt="Slideshow" />
+                {pictures.length > 1 && (
+                    <>
+                        <img src={leftArrow} onClick={goToPrevious} className="left-arrow" alt="left-arrow" />
+                        <img src={rightArrow} onClick={goToNext} className="right-arrow" alt="right-arrow" />
+                        <div className="numeration">
+                            {currentIndex + 1} / {pictures.length}
+                        </div>
+                    </>
+                )}
+            </div>
             <div className="carousel-description">
                 <div className="title-hostName-hostPicture">
                     <h2>{title}</h2>
@@ -57,29 +69,18 @@ function Slideshow({ property }) {
                     <p>{location}</p>
                 </div>
                 <div className='tags-ratings'>
-                    <ul className='tags-list'>{tags.map(tag => (<li key={tag}>{tag}</li>))}</ul>
-                    <StarRating rating={ratings}/>
+                    <ul className='tags-list'>{tags.map(tag => (<li className='tags-list-tag' key={tag}>{tag}</li>))}</ul>
+                    <StarRating rating={rating}/>
                 </div>
-                <div className='collapse-component'>
-                    <Collapse title="Description"/>
-                    <Collapse title="Équipements"/>
+                <div className='collapse-container'>
+                    <Collapse title="Description" children={description}/>
+                    <Collapse title="Équipements" children={
+                        <ul className='equipments-list'>{equipments.map(equipment => (<li className='equipments-list-equipment' key={equipment}>{equipment}</li>))}</ul>
+                    }/>
                 </div>
-                {pictures.length > 1 && (
-                    <div className="numeration">
-                        {currentIndex + 1} / {pictures.length}
-                    </div>
-                )} 
-            </div>
-            
+            </div> 
         </div>
     );
 }
 
 export default Slideshow;
-
-// {tags.map(tag => (<li>{tag}</li>))}
-// <StarRating rating={rating}/>
-// key={tag.id}
-// <HostName host={host.name}/>
-
-// <div className="carousel-description"></div>

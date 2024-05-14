@@ -1,87 +1,104 @@
-.slideshow, .slideshow * {
-    margin: 0;
-    padding: 0;
-}
+@import 'variables';
+@import 'Collapse.scss';
 
 .slideshow {
-    position: relative;
-    .carousel-picture {
-        width: 100%;
-        height: 415px;
-        object-fit: cover;
-        border-radius: 25px;
-    }
-    .left-arrow, .right-arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        cursor: pointer;
-        font-size: 24px;
-        background: none;
-        border: none;
-    }
-    .left-arrow {
-        left: 10px;
-    }
-    .right-arrow {
-        right: 10px;
-    }
-    .numeration {
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-        background: rgba(0, 0, 0, 0.5);
-        color: white;
-        padding: 5px 10px;
-        border-radius: 5px;
+    .carousel-container {
+        position: relative;
+        .carousel-picture {
+            width: $fullpercentage;
+            height: 415px;
+            object-fit: cover;
+            border-radius: 25px;
+        }
+        .left-arrow, .right-arrow {
+            position: absolute;
+            top: $halfpercentage;
+            cursor: pointer;
+            font-size: 24px;
+            background: none;
+            transform: translateY(-$halfpercentage);
+            &.left-arrow {left: 10px;}
+            &.right-arrow {right: 10px;}
+        }
+        .numeration {
+            position: absolute;
+            left: $halfpercentage;
+            transform: translateX(-$halfpercentage);
+            color: $white-color;
+            font-size: 18px;
+            font-weight: 500;
+            bottom: 30px;
+        }
     }
     .carousel-description {
         margin-top: 24px;
-    }
-    .title-hostName-hostPicture {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }   h2 {
-            font-size: 36px; 
-            color: rgba(255, 96, 96, 1); 
-            font-weight: 500;
-            align-items: center;
-        }
-        .hostName-hostPicture {
+        .title-hostName-hostPicture {
             display: flex;
-            gap: 10px;
-        }   .hostName {
+            justify-content: space-between;
+            align-items: center;
+            h2 {
+                font-size: 36px; 
+                color: $slideshow-main-color; 
+                font-weight: 500;
+            }
+            .hostName-hostPicture {
                 display: flex;
-                flex-direction: column;
-                text-align: end;
-                margin: 0;
-                justify-content: center;
                 gap: 10px;
-                color: rgba(255, 96, 96, 1);
-                font-size: 18px;
+                .hostName {
+                    display: flex;
+                    flex-direction: column;
+                    text-align: end;
+                    justify-content: center;
+                    gap: 6px;
+                    color: $slideshow-main-color;
+                    font-size: 18px;
+                }
             }
-    .tags-ratings {
-        display: flex;
-        justify-content: space-between;
-        margin: 22px 0;
-    }   .tags-list {
-            list-style-type: none;
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }   li {
-                padding: 3px 40px;
-                background-color: rgba(255, 96, 96, 1); 
-                color: white;
-                font-weight: 700;
-                border-radius: 10px;
-            }
-    .collapse-component {
-        display: flex;
-        gap: 76px;
-    }   .collapse-button {
-            width: 100%;
         }
-    
+        .tags-ratings {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            @media (max-width: 1300px){
+                flex-direction: column;
+                gap: 24px;
+            }
+            .tags-list {
+                list-style-type: none;
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                margin-top: 20px;
+                flex-wrap: wrap;
+                .tags-list-tag {
+                    padding: 3px 40px;
+                    background-color: $slideshow-main-color; 
+                    color: $white-color;
+                    font-weight: 700;
+                    border-radius: $main-components--border-radius;
+                }
+            }
+        }
+    }
+    .collapse-container {
+        display: flex;
+        flex-direction: row;
+        gap: 76px;
+        margin: 38px 0;
+        .collapse-button {
+            width: $fullpercentage;
+            .collapse-title {
+                border-radius: $main-components--border-radius;
+            }
+            .collapse-content {
+                font-size: 18px;
+                line-height: 1.6em;
+                border-radius: $main-components--border-radius;
+                .equipments-list {
+                    list-style-type: none;
+                }
+            }
+        }
+    }
 }
+
