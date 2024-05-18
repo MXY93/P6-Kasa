@@ -51,26 +51,30 @@ function Slideshow({ property }) {
                 )}
             </div>
             <div className="carousel-description">
-                <div className="title-hostName-hostPicture">
-                    <h2>{title}</h2>
-                    <div className='hostName-hostPicture'>
-                        <HostName host={host}/>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-                            <defs>
-                                <pattern id="imgpattern" patternUnits="userSpaceOnUse" width="64" height="64">
-                                <image href={host.picture} x="0" y="0" width="64" height="64" />
-                                </pattern>
-                            </defs>
-                            <circle cx="32" cy="32" r="32" fill="url(#imgpattern)" />
-                        </svg> 
+                <div className="carousel-description--infos-part">
+                    <div className="title-and-location-and-tags">
+                        <h2>{title}</h2>
+                        <p>{location}</p>
+                        <div className='tags-container'>
+                            <ul className='tags-list'>{tags.map(tag => (<li className='tags-list-tag' key={tag}>{tag}</li>))}</ul>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <p>{location}</p>
-                </div>
-                <div className='tags-ratings'>
-                    <ul className='tags-list'>{tags.map(tag => (<li className='tags-list-tag' key={tag}>{tag}</li>))}</ul>
-                    <StarRating rating={rating}/>
+                    <div className="host-infos-and-ratings">
+                        <div className="host-infos">
+                            <HostName host={host}/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+                                <defs>
+                                    <pattern id="imgpattern" patternUnits="userSpaceOnUse" width="64" height="64">
+                                    <image href={host.picture} x="0" y="0" width="64" height="64" />
+                                    </pattern>
+                                </defs>
+                                <circle cx="32" cy="32" r="32" fill="url(#imgpattern)" />
+                            </svg> 
+                        </div>
+                        <div className="ratings">
+                            <StarRating rating={rating}/>
+                        </div>
+                    </div>
                 </div>
                 <div className='collapse-container'>
                     <Collapse title="Description" children={description}/>
@@ -78,7 +82,7 @@ function Slideshow({ property }) {
                         <ul className='equipments-list'>{equipments.map(equipment => (<li className='equipments-list-equipment' key={equipment}>{equipment}</li>))}</ul>
                     }/>
                 </div>
-            </div> 
+            </div>
         </div>
     );
 }
