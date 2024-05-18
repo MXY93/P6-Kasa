@@ -2,28 +2,42 @@
 
 .banner {
     height: 223px;
-    width: 100%;
+    @media(max-width: 765px){
+        height: 28vw;
+        border-radius: $main-components--border-radius;
+    }
     display: flex;
     justify-content: $center;
     align-items: $center;
-    border-radius: $banner-and-card--border-radius;
+    border-radius: $main-components-larger--border-radius;
     position: relative;
     background-size: cover;
     background-position: $center;
     &-overlay {
         position: absolute;
         inset: 0;
-        border-radius: $banner-and-card--border-radius;
-        z-index: 1;
+        border-radius: $main-components-larger--border-radius;
+        @media(max-width: 765px){
+            border-radius: $main-components--border-radius;
+        }
     }
     h1 {
-        position: relative;
         z-index: 2;
-        font-size: 2.5em;
+        font-size: 3rem;
         color: $white-color;
-        margin: 0;
+        margin: 16px;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        @media(max-width: 765px){
+            font-size: 5.5vw;
+            text-shadow: none;
+            padding-right: 3.6rem;
+        }
+        @media(max-width: 425px){
+            font-size: 6.4vw;
+        }
+        @media(max-width: 374px){
+            text-align: center;
+            padding-right: 0;
+        }
     }
 }
-  
-
-  

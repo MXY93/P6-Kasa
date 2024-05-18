@@ -2,44 +2,54 @@
 
 .cards-list {
     background-color: #F6F6F6;
-    border-radius: $banner-and-card--border-radius;
+    border-radius: $main-components-larger--border-radius;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
     padding: 50px;
     gap: 50px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    
-}
-
-.card {
-    display: grid;
-    width: 100%;
-    height: 340px;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    border-radius: 10px;
-    position: relative;
-    &:hover {
-        cursor: pointer;
+    margin-top: 43px;
+    @media (max-width: 765px){
+        margin-top: 22px;
+        padding: 0;
+        gap: 20px;
+        background-color: transparent;
+    }
+    @media (max-width: 400px) {
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    }
+    .card {
+        display: grid;
+        height: 340px;
+        @media(max-width: 765px){
+            height: 255px;
+        }
+        background-color: white;
+        @include box-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+        overflow: hidden;
+        border-radius: $main-components--border-radius;
+        position: relative;
+        &:hover {
+            cursor: pointer;
+        }
+        img {
+            position: absolute;
+            height: $fullpercentage;
+            width: $fullpercentage;
+            object-fit: cover;
+            z-index: 0;
+        }
+        h2 {
+            z-index: 1;
+            color: $white-color;
+            background-color: rgba(0, 0, 0, 0.5);
+            font-size: $medium-font-size;
+            margin-top: auto;
+            padding: 20px;
+        }
     }
 }
 
-.card img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-}
 
-.card h2 {
-    z-index: 1;
-    color: rgba(255, 255, 255, 1);
-    background-color: rgba(0, 0, 0, 0.5);
-    font-size: 1.2em;
-    margin-top: auto;
-    padding: 20px;
-    margin-bottom: 0;
-}
+
+
+
